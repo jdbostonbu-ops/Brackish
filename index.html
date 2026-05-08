@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brackish — A Tax Bracket Estimator for Entrepreneurs</title>
+    <meta name="description" content="An educational tool that helps entrepreneurs understand the progressive bracket math behind their federal, state, and self-employment taxes — and figure out how much to set aside each pay period.">
+
+    <!-- Distinctive type pairing: Fraunces (display serif) + Manrope (body sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         HEADER — sticky nav with logomark
+         ═══════════════════════════════════════════════════════════ -->
+    <header class="site-header" role="banner">
+        <div class="container header-inner">
+            <a href="#top" class="logo" aria-label="Brackish, home">
+                <span class="logo-mark" aria-hidden="true">◐</span>
+                <span class="logo-text">Brackish</span>
+            </a>
+            <nav class="site-nav" aria-label="Primary">
+                <a href="#how-it-works">How brackets work</a>
+                <a href="#calculator">Estimator</a>
+                <a href="#why-entrepreneurs">For founders</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+
+        <!-- ═══════════════════════════════════════════════════════
+             HERO
+             ═══════════════════════════════════════════════════════ -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-bg" aria-hidden="true"></div>
+            <div class="container hero-inner">
+                <p class="hero-eyebrow reveal">For entrepreneurs who don't want to fall behind</p>
+                <h1 id="hero-title" class="hero-title reveal">
+                    Know <em>exactly</em> how much<br>
+                    to set aside each month.
+                </h1>
+                <p class="hero-lede reveal">
+                    Most founders fall behind on taxes because they treat one annual bill as a surprise
+                    instead of a monthly habit. This estimator uses the same progressive bracket math
+                    the IRS uses — so you can budget the right amount each pay period and stop dreading April.
+                </p>
+                <div class="hero-actions reveal">
+                    <button type="button" class="btn btn-primary" data-scroll-to="calculator">
+                        Estimate my set-aside
+                    </button>
+                    <button type="button" class="btn btn-ghost" data-scroll-to="how-it-works">
+                        First, how brackets work
+                    </button>
+                </div>
+                <div class="hero-stats reveal">
+                    <div class="stat">
+                        <p class="stat-num"><span data-counter data-target="7000" data-prefix="$">$0</span></p>
+                        <p class="stat-label">average overpayment when you assume "I'm in the 24% bracket = pay 24%"</p>
+                    </div>
+                    <div class="stat-divider" aria-hidden="true"></div>
+                    <div class="stat">
+                        <p class="stat-num"><span data-counter data-target="153" data-suffix="%">0%</span></p>
+                        <p class="stat-label">extra owed when entrepreneurs forget self-employment tax</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════════
+             SECTION 1 — THE BRACKET MISCONCEPTION
+             ═══════════════════════════════════════════════════════ -->
+        <section id="how-it-works" class="section section-misconception" aria-labelledby="misc-title">
+            <div class="container">
+                <p class="section-eyebrow reveal">The misconception</p>
+                <h2 id="misc-title" class="section-title reveal">
+                    Your "tax bracket" doesn't mean<br>what most people think it means.
+                </h2>
+
+                <div class="comparison reveal">
+                    <article class="compare-card compare-wrong">
+                        <div class="compare-tag">What most people think</div>
+                        <p class="compare-headline">"I'm in the 24% bracket so I pay 24% of my income."</p>
+                        <div class="compare-math">
+                            <div class="math-row">
+                                <span class="math-label">Annual income</span>
+                                <span class="math-value">$144,000</span>
+                            </div>
+                            <div class="math-row">
+                                <span class="math-label">× their "bracket"</span>
+                                <span class="math-value">24%</span>
+                            </div>
+                            <div class="math-row math-total">
+                                <span class="math-label">They think they owe</span>
+                                <span class="math-value">$34,560</span>
+                            </div>
+                        </div>
+                        <p class="compare-foot">This is wrong by ~$7,000.</p>
+                    </article>
+
+                    <article class="compare-card compare-right">
+                        <div class="compare-tag">What actually happens</div>
+                        <p class="compare-headline">Each rate applies only to the income inside its layer.</p>
+                        <div class="compare-math">
+                            <div class="math-layer">
+                                <span class="math-label">10% on first $11,925</span>
+                                <span class="math-value">$1,192</span>
+                            </div>
+                            <div class="math-layer">
+                                <span class="math-label">12% on next $36,550</span>
+                                <span class="math-value">$4,386</span>
+                            </div>
+                            <div class="math-layer">
+                                <span class="math-label">22% on next $54,875</span>
+                                <span class="math-value">$12,072</span>
+                            </div>
+                            <div class="math-layer">
+                                <span class="math-label">24% on next $40,650</span>
+                                <span class="math-value">$9,756</span>
+                            </div>
+                            <div class="math-row math-total">
+                                <span class="math-label">Actual federal tax</span>
+                                <span class="math-value">$27,406</span>
+                            </div>
+                        </div>
+                        <p class="compare-foot">Your <em>effective</em> rate is closer to 19%, not 24%.</p>
+                    </article>
+                </div>
+
+                <blockquote class="pullquote reveal">
+                    <p>The percentage in your bracket only applies to income <em>above</em> a threshold —
+                    never to your whole salary.</p>
+                </blockquote>
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════════
+             SECTION 2 — THE CALCULATOR
+             ═══════════════════════════════════════════════════════ -->
+        <section id="calculator" class="section section-calc" aria-labelledby="calc-title">
+            <div class="container">
+                <p class="section-eyebrow reveal">The estimator</p>
+                <h2 id="calc-title" class="section-title reveal">
+                    Tell us about your situation.
+                </h2>
+                <p class="section-lede reveal">
+                    All math runs in your browser. Nothing is sent to a server, stored, or saved.
+                    Brackets are 2025 (verify the latest at IRS.gov each year).
+                </p>
+
+                <form id="calcForm" class="calc-form reveal" novalidate>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="income" class="field-label">Net taxable income</label>
+                            <div class="input-prefix">
+                                <span class="prefix-mark"></span>
+                                <input type="number" id="income" name="income" min="1" step="100"
+                                       placeholder="154000" required>
+                            </div>
+                            <small class="field-hint">
+                                Your business's net income <em>after</em> deducting legitimate expenses
+                                and write-offs. Don't enter gross sales revenue.
+                            </small>
+                        </div>
+
+                        <div class="field">
+                            <label for="filingStatus" class="field-label">Filing status</label>
+                            <select id="filingStatus" name="filingStatus" class="select">
+                                <option value="single">Single</option>
+                                <option value="marriedJointly">Married filing jointly</option>
+                                <option value="marriedSeparately">Married filing separately</option>
+                                <option value="headOfHousehold">Head of household</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="period" class="field-label">Set-aside frequency</label>
+                            <select id="period" name="period" class="select">
+                                <option value="monthly">Monthly</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="biweekly">Every 2 weeks</option>
+                                <option value="quarterly">Quarterly</option>
+                            </select>
+                        </div>
+
+                        <div class="field field-checkbox">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="selfEmployed" name="selfEmployed">
+                                <span class="checkbox-box" aria-hidden="true"></span>
+                                <span class="checkbox-text">
+                                    <strong>I'm self-employed</strong>
+                                    <small>Add 15.3% self-employment tax (the silent killer)</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- States — multi-state support -->
+                    <div class="states-block">
+                        <p class="field-label">States</p>
+                        <div id="stateRows"></div>
+                        <button type="button" id="addStateBtn" class="btn-text">
+                            + Add another state
+                        </button>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">
+                        Calculate my set-aside
+                    </button>
+                </form>
+
+                <div id="results" class="results" aria-live="polite"></div>
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════════
+             SECTION 3 — WHY ENTREPRENEURS GET HIT
+             ═══════════════════════════════════════════════════════ -->
+        <section id="why-entrepreneurs" class="section section-founders" aria-labelledby="founders-title">
+            <div class="container">
+                <p class="section-eyebrow reveal">For founders</p>
+                <h2 id="founders-title" class="section-title reveal">
+                    Three things W-2 employees don't deal with — but you do.
+                </h2>
+
+                <div class="founder-cards">
+                    <article class="founder-card reveal">
+                        <div class="founder-num">01</div>
+                        <h3 class="founder-card-title">Self-employment tax</h3>
+                        <p>
+                            Employees split FICA with their employer (7.65% each). When you're
+                            self-employed, <em>you</em> are both halves — that's 15.3% on net SE
+                            earnings, on top of income tax. For a $150K founder, this is roughly
+                            $20,000+ that catches first-timers off guard.
+                        </p>
+                    </article>
+
+                    <article class="founder-card reveal">
+                        <div class="founder-num">02</div>
+                        <h3 class="founder-card-title">Quarterly estimates</h3>
+                        <p>
+                            The IRS expects payment four times a year — April, June, September,
+                            January. Miss them and you pay a small underpayment penalty plus interest.
+                            The "safe harbor" rule: pay 110% of last year's tax (or 90% of this year's)
+                            and you're protected.
+                        </p>
+                    </article>
+
+                    <article class="founder-card reveal">
+                        <div class="founder-num">03</div>
+                        <h3 class="founder-card-title">Cash-flow whiplash</h3>
+                        <p>
+                            Treating tax as one annual bill turns spring into a crisis.
+                            Setting aside the right amount every pay period — into a separate
+                            savings account you don't touch — is the difference between
+                            "calm April" and "panic April."
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════════
+             SECTION 4 — RESOURCES
+             ═══════════════════════════════════════════════════════ -->
+        <section class="section section-resources" aria-labelledby="resources-title">
+            <div class="container">
+                <p class="section-eyebrow reveal">What to do next</p>
+                <h2 id="resources-title" class="section-title reveal">
+                    This site teaches. These tools calculate.
+                </h2>
+
+                <div class="resource-cards">
+                    <a class="resource-card reveal" href="https://www.irs.gov/individuals/tax-withholding-estimator" target="_blank" rel="noopener">
+                        <div class="resource-tag">Official</div>
+                        <h3 class="resource-card-title">IRS Withholding Estimator</h3>
+                        <p>The IRS's free, official tool. Handles deductions, credits, withholding adjustments, and edge cases this site doesn't.</p>
+                        <span class="resource-cta">Open at IRS.gov →</span>
+                    </a>
+
+                    <a class="resource-card reveal" href="https://www.aicpa-cima.com/resources/landing/find-a-cpa" target="_blank" rel="noopener">
+                        <div class="resource-tag">Get help</div>
+                        <h3 class="resource-card-title">Find a CPA</h3>
+                        <p>For your specific situation — write-offs, business structure, multi-state work — a licensed CPA pays for themselves many times over.</p>
+                        <span class="resource-cta">AICPA directory →</span>
+                    </a>
+
+                    <a class="resource-card reveal" href="https://www.irs.gov/forms-pubs/about-form-1040-es" target="_blank" rel="noopener">
+                        <div class="resource-tag">Quarterly</div>
+                        <h3 class="resource-card-title">Form 1040-ES</h3>
+                        <p>The form for paying quarterly estimated taxes. Bookmark this and your state's equivalent.</p>
+                        <span class="resource-cta">View on IRS.gov →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ═══════════════════════════════════════════════════════════
+         FOOTER WITH DISCLAIMER
+         ═══════════════════════════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo-mark" aria-hidden="true">◐</span>
+                    <span class="logo-text">Brackish</span>
+                </div>
+                <div class="footer-disclaimer">
+                    <h4>Read this carefully.</h4>
+                    <p>
+                        Brackish is an educational tool. It is <strong>not</strong> tax advice. The estimates
+                        produced are raw bracket calculations based on the income you enter. They do <strong>not</strong>
+                        account for the standard deduction, itemized deductions, business write-offs, retirement
+                        contributions, tax credits, alternative minimum tax, or any other adjustments.
+                        <strong>Always consult a licensed CPA or tax professional</strong> for your specific situation.
+                    </p>
+                    <p>
+                        Tax law changes annually. Brackets shown reflect the 2025 tax year. Verify current
+                        brackets at IRS.gov before relying on any number.
+                    </p>
+                </div>
+            </div>
+            <div class="footer-foot">
+                <p>Educational resource · 2025 brackets · No data is collected, stored, or transmitted.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="tax-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
